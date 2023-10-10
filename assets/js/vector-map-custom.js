@@ -360,8 +360,8 @@ $(function () {
                 }, {
                     attribute: 'image',
                     scale: {
-                        bank: '../assets/images/vectormap/icon-bank.png',
-                        factory: '../assets/images/vectormap/icon-factory.png'
+                        bank: 'assets/images/vectormap/icon-bank.png',
+                        factory: 'assets/images/vectormap/icon-factory.png'
                     },
                     values: {
                         '4': 'bank',
@@ -391,8 +391,8 @@ $(function () {
                     }
                 }, {
                     scale: {
-                        redGreen: '../assets/images/vectormap/bg-red-green.png',
-                        yellowBlue: '../assets/images/vectormap/bg-yellow-blue.png'
+                        redGreen: 'assets/images/vectormap/bg-red-green.png',
+                        yellowBlue: 'assets/images/vectormap/bg-yellow-blue.png'
                     },
                     values: {
                         "US-TX": 'redGreen',
@@ -465,9 +465,9 @@ $(function () {
                 markers: [{
                     attribute: 'image',
                     scale: {
-                        'closed': '../assets/images/vectormap/icon-np-3.png',
-                        'activeUntil2018': '../assets/images/vectormap/icon-np-2.png',
-                        'activeUntil2022': '../assets/images/vectormap/icon-np-1.png'
+                        'closed': 'assets/images/vectormap/icon-np-3.png',
+                        'activeUntil2018': 'assets/images/vectormap/icon-np-2.png',
+                        'activeUntil2022': 'assets/images/vectormap/icon-np-1.png'
                     },
                     values: plants.reduce(function (p, c, i) { p[i] = c.status; return p }, {}),
                     legend: {
