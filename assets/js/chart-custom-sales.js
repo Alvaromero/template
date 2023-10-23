@@ -5562,7 +5562,7 @@ if (jQuery('#calendar1').length) {
           type: 'column',
           data: window.dailyTrendSales.map(day => day.sales)
         }, {
-          name: 'Exceptions',
+          name: 'Expected',
           type: 'line',
           data: window.dailyTrendSales.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
         }],
@@ -5640,6 +5640,81 @@ if (jQuery('#calendar1').length) {
     };
 
     var chartSales = new ApexChartsNew(document.querySelector("#layout-1-chart-03"), options2);
+    chartSales.render();
+    const body = document.querySelector('body')
+    if (body.classList.contains('dark')) {
+      apexChartUpdate(chartSales, {
+        dark: true
+      })
+    }
+
+    document.addEventListener('ChangeColorMode', function (e) {
+      apexChartUpdate(chartSales, e.detail)
+    })
+  }
+
+  if (jQuery("#layout-1-chart-daily").length) {
+
+    var options2 = {
+      series: [
+        {
+          name: 'Sales',
+          type: 'area',
+          data: window.yesterdayData.map(day => day.sales)
+        }, {
+          name: 'Expected',
+          type: 'line',
+          data: window.yesterdayData.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+        }],
+      chart: {
+        height: 500,
+        type: 'line',
+        stacked: true
+      },
+      stroke: {
+        width: [0, 4],
+        curve: 'smooth'
+      },
+      plotOptions: {
+        bar: { columnWidth: "60%" }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: window.yesterdayData.map(day => day.hour),
+        tickPlacement: 'on',
+        labels: {
+          show: true,
+          rotate: -90, // Rota las etiquetas para que sean legibles
+        }
+      },
+      yaxis: [
+        {
+          seriesName: 'Sales',
+          show: false
+        },
+        {
+          seriesName: 'Expected',
+          show: false
+        }
+      ],
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function (y) {
+            if (typeof y !== "undefined") {
+              return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(y);
+            }
+            return y;
+
+          }
+        }
+      }
+    };
+
+    var chartSales = new ApexChartsNew(document.querySelector("#layout-1-chart-daily"), options2);
     chartSales.render();
     const body = document.querySelector('body')
     if (body.classList.contains('dark')) {
