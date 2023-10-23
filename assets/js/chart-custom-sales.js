@@ -1,6 +1,12 @@
 (function(jQuery) {
 
-    "use strict";
+  "use strict";
+  let chartForecastInformation = null;
+  let chartYesterdaySales = null;
+  let chartMonthlySales = null;
+  let chartYearToDateSales = null;
+  let chartYearSalesTrend = null;
+  let chartDailySalesTrend = null;
 
   // for apexchart
   function apexChartUpdate(chart, detail) {
@@ -16,7 +22,7 @@
   }
 
   // información inicial
-  setData($(this).val());
+  setData(607);
 
   // cambio de partner
   $( "#inputGroupSelect01" ).on( "change", function() {
@@ -25,8 +31,7 @@
 
   function setData(partnerId) {
     /* FORECAST INFORMATION */
-    console.log(partnerId);
-    const monthlySales = montlyData.reduce((total, item) => total + item.sales, 0);
+    const monthlySales = montlyData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
     let options = {
       series: [73.33, 66.66],
       labels: ['Expected sales', 'Current sales'],
@@ -36,14 +41,14 @@
         animations: {
           enabled: true,
           easing: 'easeinout',
-          speed: 3000,
+          speed: 2000,
           animateGradually: {
               enabled: true,
               delay: 150
           },
           dynamicAnimation: {
               enabled: true,
-              speed: 350
+              speed: 150
           }
         }
       },
@@ -74,22 +79,27 @@
       colors: ['#05bbc9', '#876cfe'],
       stroke: { lineCap: "round" }
     };
-    let chart = new ApexCharts(document.querySelector("#layout-1-chart-01"), options);
-    chart.render();
+
+    if( chartForecastInformation != null ) {
+      chartForecastInformation.destroy();
+    }
+    chartForecastInformation = new ApexCharts(document.querySelector("#layout-1-chart-01"), options);
+    chartForecastInformation.render();
+
     let body = document.querySelector('body')
     if (body.classList.contains('dark')) {
-      apexChartUpdate(chart, {
+      apexChartUpdate(chartForecastInformation, {
         dark: true
       })
     }
     document.addEventListener('ChangeColorMode', function (e) {
-      apexChartUpdate(chart, e.detail)
+      apexChartUpdate(chartForecastInformation, e.detail)
     })
 
     /* Yesterdays Sales */
-    const yesterdaySales = yesterdayData.reduce((total, item) => total + item.sales, 0).toFixed(2);
+    const yesterdaySales = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0).toFixed(2);
     $('#yesterdars_sales').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(yesterdaySales));
-    const yesterdayUnits = yesterdayData.reduce((total, item) => total + item.quantity, 0).toFixed(0);
+    const yesterdayUnits = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.quantity, 0).toFixed(0);
     $('#yesterdars_units').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(yesterdayUnits));
     options = {
       chart: {
@@ -126,11 +136,11 @@
       },
       series: [{
         name: 'Sales',
-        data: yesterdayData.map(hour => hour.sales)
+        data: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
       }, ],
       colors: ['#50b5ff'],
       xaxis: {
-        categories: yesterdayData.map(hour => hour.hour),
+        categories: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.hour),
       },
       tooltip: {
         y: {
@@ -145,8 +155,20 @@
         }
       }
     };
-    chart = new ApexCharts( document.querySelector("#chart-yesterday-sales"), options );
-    chart.render();
+    if( chartYesterdaySales != null ) {
+      chartYesterdaySales.destroy();
+    }
+    chartYesterdaySales = new ApexCharts( document.querySelector("#chart-yesterday-sales"), options );
+    chartYesterdaySales.render();
+    body = document.querySelector('body')
+    if (body.classList.contains('dark')) {
+      apexChartUpdate(chartYesterdaySales, {
+        dark: true
+      })
+    }
+    document.addEventListener('ChangeColorMode', function (e) {
+      apexChartUpdate(chartYesterdaySales, e.detail)
+    })
 
     /*Month to Date Sales*/
     $('#montly_sales').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(monthlySales));
@@ -191,11 +213,11 @@
       },
       series: [{
           name: 'Sales',
-          data: montlyData.map(hour => hour.sales)
+          data: montlyData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
       }, ],
       colors: ['#fd7e14'],
       xaxis: {
-        categories: montlyData.map(hour => hour.date),
+        categories: montlyData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.date),
       },
       tooltip: {
           y: {
@@ -210,13 +232,25 @@
           }
       }
     };
-    chart = new ApexCharts( document.querySelector("#chart-montly-sales"), options );
-    chart.render();
+    if( chartMonthlySales != null ) {
+      chartMonthlySales.destroy();
+    }
+    chartMonthlySales = new ApexCharts( document.querySelector("#chart-montly-sales"), options );
+    chartMonthlySales.render();
+    body = document.querySelector('body')
+    if (body.classList.contains('dark')) {
+      apexChartUpdate(chartMonthlySales, {
+        dark: true
+      })
+    }
+    document.addEventListener('ChangeColorMode', function (e) {
+      apexChartUpdate(chartMonthlySales, e.detail)
+    })
 
     /* Year to Date Sales */
-    const yearSales = yearData.reduce((total, item) => total + item.sales, 0);
+    const yearSales = yearData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
     $('#year_sales').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(yearSales));
-    const yearUnits = yearData.reduce((total, item) => total + item.units, 0);
+    const yearUnits = yearData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.units, 0);
     $('#year_units').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(yearUnits));
     options = {
       chart: {
@@ -255,11 +289,11 @@
       },
       series: [{
         name: 'Sales',
-        data: yearData.map(hour => hour.sales)
+        data: yearData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
       }, ],
       colors: ['#49f0d3'],
       xaxis: {
-        categories: yearData.map(hour => hour.month),
+        categories: yearData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.month),
       },
       tooltip: {
           y: {
@@ -269,8 +303,20 @@
           }
       }
     };
-    chart = new ApexCharts(document.querySelector("#chart-year-sales"),options);
-    chart.render();
+    if( chartYearToDateSales != null ) {
+      chartYearToDateSales.destroy();
+    }
+    chartYearToDateSales = new ApexCharts(document.querySelector("#chart-year-sales"),options);
+    chartYearToDateSales.render();
+    body = document.querySelector('body')
+    if (body.classList.contains('dark')) {
+      apexChartUpdate(chartYearToDateSales, {
+        dark: true
+      })
+    }
+    document.addEventListener('ChangeColorMode', function (e) {
+      apexChartUpdate(chartYearToDateSales, e.detail)
+    })
 
     /* Average Daily Sales */
     const differenceDays = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24));
@@ -293,11 +339,11 @@
         {
           name: 'Sales',
           type: 'area',
-          data: window.yesterdayData.map(day => day.sales)
+          data: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
         }, {
           name: 'Expected',
           type: 'line',
-          data: window.yesterdayData.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+          data: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
         }],
       chart: {
         height: 500,
@@ -318,7 +364,7 @@
         size: [4, 4]
       },
       xaxis: {
-        categories: window.yesterdayData.map(day => day.hour),
+        categories: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.hour),
         tickPlacement: 'on',
         labels: {
           show: true,
@@ -360,32 +406,34 @@
         }
       }
     };
-
-    let chartDailySales = new ApexChartsNew(document.querySelector("#layout-1-chart-daily"), optionsDailySales);
-    chartDailySales.render();
+    if( chartDailySalesTrend != null ) {
+      chartDailySalesTrend.destroy();
+    }
+    chartDailySalesTrend = new ApexChartsNew(document.querySelector("#layout-1-chart-daily"), optionsDailySales);
+    chartDailySalesTrend.render();
     body = document.querySelector('body')
     if (body.classList.contains('dark')) {
-      apexChartUpdate(chartDailySales, {
+      apexChartUpdate(chartDailySalesTrend, {
         dark: true
       })
     }
 
     document.addEventListener('ChangeColorMode', function (e) {
-      apexChartUpdate(chartDailySales, e.detail)
+      apexChartUpdate(chartDailySalesTrend, e.detail)
     })
 
     /* Year sales trend */
-
+    const baseUnit = window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).length;
     const optionsYearSalesTrend = {
       series: [
         {
           name: 'Sales',
           type: 'column',
-          data: window.dailyTrendSales.map(day => day.sales)
+          data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
         }, {
           name: 'Expected',
           type: 'line',
-          data: window.dailyTrendSales.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+          data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
         }],
       chart: {
         height: 500,
@@ -394,11 +442,10 @@
         events: {
           zoomed: function(chartContext, { xaxis, yaxis }) {
             const zoomStart = xaxis.min >= 1 ? xaxis.min : 1;
-            const zoomEnd = xaxis.max <= 151 ? xaxis.max : 151;
-            const categories = window.dailyTrendSales.map(day => day.date);
+            const zoomEnd = xaxis.max <= baseUnit ? xaxis.max : baseUnit;
             chartContext.updateOptions({
               xaxis: {
-                categories: window.dailyTrendSales.map(day => day.date),
+                categories: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
                 tickPlacement: 'on',
                 labels: { show: true, rotate: -90, },
                 min: zoomStart,
@@ -409,8 +456,8 @@
           beforeResetZoom: function(chartContext, opts) {
             return {
               xaxis: {
-                min: 140,
-                max: 151
+                min: baseUnit - 10,
+                max: baseUnit
               }
             }
           }
@@ -426,14 +473,14 @@
         enabled: false
       },
       xaxis: {
-        categories: window.dailyTrendSales.map(day => day.date),
+        categories: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
         tickPlacement: 'on',
         labels: {
           show: true,
           rotate: -90, // Rota las etiquetas para que sean legibles
         },
-        min: 140,
-        max: 151
+        min: baseUnit - 10,
+        max: baseUnit
       },
       yaxis: [
         {
@@ -459,18 +506,37 @@
         }
       }
     };
-    let chartYearSales = new ApexChartsNew(document.querySelector("#layout-1-chart-03"), optionsYearSalesTrend);
-    chartYearSales.render();
+    if( chartYearSalesTrend != null ) {
+      chartYearSalesTrend.destroy();
+    }
+    chartYearSalesTrend = new ApexChartsNew(document.querySelector("#layout-1-chart-03"), optionsYearSalesTrend);
+    chartYearSalesTrend.render();
     body = document.querySelector('body')
     if (body.classList.contains('dark')) {
-      apexChartUpdate(chartYearSales, {
+      apexChartUpdate(chartYearSalesTrend, {
         dark: true
       })
     }
 
     document.addEventListener('ChangeColorMode', function (e) {
-      apexChartUpdate(chartYearSales, e.detail)
+      apexChartUpdate(chartYearSalesTrend, e.detail)
     })
+
+    const $counters = $(".counter");
+    const counterUp = window.counterUp["default"]
+    $counters.each(function (ignore, counter) {
+            var waypoint = new Waypoint({
+                element: $(this),
+                handler: function () {
+                    counterUp(counter, {
+                        duration: 1000,
+                        delay: 10
+                    });
+                    this.destroy();
+                },
+                offset: 'bottom-in-view',
+            });
+    });
 
   }
 
