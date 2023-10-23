@@ -5655,7 +5655,7 @@ if (jQuery('#calendar1').length) {
 
   if (jQuery("#layout-1-chart-daily").length) {
 
-    var options2 = {
+    var options3 = {
       series: [
         {
           name: 'Sales',
@@ -5672,7 +5672,7 @@ if (jQuery('#calendar1').length) {
         stacked: true
       },
       stroke: {
-        width: [0, 4],
+        width: [4, 4],
         curve: 'smooth'
       },
       plotOptions: {
@@ -5680,6 +5680,9 @@ if (jQuery('#calendar1').length) {
       },
       dataLabels: {
         enabled: false
+      },
+      markers: {
+        size: [4, 4]
       },
       xaxis: {
         categories: window.yesterdayData.map(day => day.hour),
@@ -5699,6 +5702,17 @@ if (jQuery('#calendar1').length) {
           show: false
         }
       ],
+      fill: {
+        opacity: [0.7, 1],
+        gradient: {
+          inverseColors: false,
+          shade: 'light',
+          type: "vertical",
+          opacityFrom: 0.85,
+          opacityTo: 0.55,
+          stops: [0, 100, 100, 100]
+        }
+      },
       tooltip: {
         shared: true,
         intersect: false,
@@ -5714,11 +5728,11 @@ if (jQuery('#calendar1').length) {
       }
     };
 
-    var chartSales = new ApexChartsNew(document.querySelector("#layout-1-chart-daily"), options2);
-    chartSales.render();
+    var chartDailySales = new ApexChartsNew(document.querySelector("#layout-1-chart-daily"), options3);
+    chartDailySales.render();
     const body = document.querySelector('body')
     if (body.classList.contains('dark')) {
-      apexChartUpdate(chartSales, {
+      apexChartUpdate(chartDailySales, {
         dark: true
       })
     }
