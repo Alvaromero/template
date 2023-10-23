@@ -1,0 +1,659 @@
+
+<!doctype html>
+<html lang="en" dir="">
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Recom – Amazon ecommerce solutions | Recom</title>
+      
+      <!-- Favicon -->
+      <script src="./data/data.js"></script>
+      <link rel="shortcut icon" href="assets/images/logo-mark-48x48.ico" />
+      <link rel="stylesheet" href="assets/css/backend-plugin.min.css?v=2.0.0">
+      <link rel="stylesheet" href="assets/css/backend.css?v=2.0.0">
+      <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="assets/vendor/remixicon/fonts/remixicon.css">
+      <link rel="stylesheet" href="assets/vendor/@icon/dripicons/dripicons.css">
+      
+      <link rel='stylesheet' href='assets/vendor/fullcalendar/core/main.css' />
+      <link rel='stylesheet' href='assets/vendor/fullcalendar/daygrid/main.css' />
+      <link rel='stylesheet' href='assets/vendor/fullcalendar/timegrid/main.css' />
+      <link rel='stylesheet' href='assets/vendor/fullcalendar/list/main.css' />
+      <link rel="stylesheet" href="assets/vendor/mapbox/mapbox-gl.css">  </head>
+  <body class="  ">
+    <!-- loader Start -->
+    <div id="loading">
+          <div id="loading-center">
+          </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      
+      <div class="iq-sidebar  rtl-iq-sidebar sidebar-default ">
+          <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+              <a href="sales.html" class="header-logo">
+                  <img src="assets/images/logo-mark.svg" style="height: 45px;" class="img-fluid rounded-normal light-logo" alt="logo">
+                  <img src="assets/images/logo-mark.svg" style="height: 45px;" class="img-fluid rounded-normal darkmode-logo" alt="logo">
+                  <span style="height: 45px;">&nbsp;Recom</span>
+              </a>
+              <div class="iq-menu-bt-sidebar">
+                  <i class="las la-bars wrapper-menu"></i>
+              </div>
+          </div>
+        <div class="data-scrollbar" data-scroll="1">
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="iq-menu">
+                    <li class="active">
+                        <a href="sales.html">
+                            <i class="las la-chart-area"></i><span>Sales</span>
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="sales.html">
+                            <i class="las la-icons"></i><span>Advertising</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+              <div id="sidebar-bottom" class="position-relative sidebar-bottom">
+                  <div class="card bg-primary rounded">
+                      <div class="card-body">
+                          <div class="sidebarbottom-content">
+                              <h5 class="mb-3 text-white mt-3">Would you like to evaluate one of your products?</h5>
+                              <a href="https://recom.co/asin-tool" target="_blank" class="btn bg-light  mt-3">
+                                <i class="fas fa-plus-square"></i>  Try our free tool
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-3"></div>
+        </div>
+          </div>       <div class="iq-top-navbar rtl-iq-top-navbar ">
+          <div class="iq-navbar-custom">
+              <nav class="navbar navbar-expand-lg navbar-light p-0">
+              <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                  <i class="ri-menu-line wrapper-menu"></i>
+                  <a href="index.html" class="header-logo">
+                      <img src="assets/images/logo-mark.svg" class="img-fluid rounded-normal light-logo" alt="logo">
+                      <img src="assets/images/logo-mark.svg" class="img-fluid rounded-normal darkmode-logo" alt="logo">
+                      
+                  </a>
+              </div>
+                  <div class="iq-search-bar device-search">
+                      <form action="#" class="searchbox">
+                      <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                      <input type="text" class="text search-input" placeholder="Search here...">
+                      </form>
+                  </div>
+                  <div class="d-flex align-items-center">
+                      <div class="change-mode">
+                          <div class="custom-control custom-switch custom-switch-icon custom-control-inline">
+                              <div class="custom-switch-inner">
+                                  <p class="mb-0"> </p>
+                                  <input type="checkbox" class="custom-control-input" id="dark-mode" data-active="true">
+                                  <label class="custom-control-label" for="dark-mode" data-mode="toggle">
+                                      <span class="switch-icon-left"><i class="a-left ri-moon-clear-line"></i></span>
+                                      <span class="switch-icon-right"><i class="a-right ri-sun-line"></i></span>
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
+                      <i class="ri-menu-3-line"></i>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                          <li class="nav-item nav-icon search-content">
+                              <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="ri-search-line"></i>
+                              </a>
+                              <div class="iq-search-bar iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownSearch">
+                                  <form action="#" class="searchbox p-2">
+                                      <div class="form-group mb-0 position-relative">
+                                      <input type="text" class="text search-input font-size-12" placeholder="type here to search...">
+                                      <a href="#" class="search-link"><i class="las la-search"></i></a> 
+                                      </div>
+                                  </form>
+                              </div>
+                          </li>                
+                          <li class="nav-item nav-icon dropdown">
+                              <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="ri-mail-line  bg-orange p-2 rounded-small"></i>
+                              <span class="bg-primary"></span>
+                              </a>
+                              <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                  <div class="card shadow-none m-0">
+                                      <div class="card-body p-0 ">
+                                      <div class="cust-title p-3">
+                                          <h5 class="mb-0">All Messages</h5>
+                                      </div>
+                                      <div class="p-3">
+                                          <a href="#" class="iq-sub-card">
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/user/01.jpg" alt="01">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-mr-3 rtl-ml-0">
+                                                  <h6 class="mb-0">Operations message <small class="badge badge-success float-right rtl-mr-1">New</small></h6>
+                                                  <small class="float-left font-size-12">12:00 PM</small>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                          <a href="#" class="iq-sub-card">
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/user/02.jpg" alt="02">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-ml-0 rtl-mr-3">
+                                                  <h6 class="mb-0 ">ADS Team Message</h6>
+                                                  <small class="float-left font-size-12">20 Apr</small>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                          <a href="#" class="iq-sub-card">
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/user/03.jpg" alt="03">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-mr-3 rtl-ml-0">
+                                                  <h6 class="mb-0 ">Operations message <small class="badge badge-success float-right rtl-mr-1">New</small></h6>
+                                                  <small class="float-left font-size-12">1:24 PM</small>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                          <a href="#" class="iq-sub-card" >
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/user/04.jpg" alt="04">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-ml-0 rtl-mr-3">
+                                                  <h6 class="mb-0">Operations message <small class="badge badge-success float-right rtl-mr-1">New</small></h6>
+                                                  <small class="float-left font-size-12">5:45 PM</small>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                      </div>
+                                      <a class="right-ic btn btn-primary btn-block position-relative p-2" href="#" role="button">
+                                          <div class="dd-icon"><i class="las la-arrow-right mr-0"></i></div>
+                                          View All
+                                      </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="nav-item nav-icon dropdown"> 
+                              <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                              <i class="ri-notification-line bg-info p-2 rounded-small"></i>
+                              <span class="bg-primary "></span>
+                              </a>
+                              <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <div class="card shadow-none m-0">
+                                      <div class="card-body p-0 ">
+                                      <div class="cust-title p-3">
+                                          <h5 class="mb-0">All Notifications</h5>
+                                      </div>
+                                      <div class="p-3">
+                                          <a href="#" class="iq-sub-card" >
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/icon/offer.png" alt="01">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-ml-0 rtl-mr-3">
+                                                  <h6 class="mb-0">A new offer has been created<small class="badge badge-success float-right rtl-mr-1">New</small></h6>                                             
+                                                  <p class="mb-0"><small class="badge badge-success float-left rtl-mr-1">Babyzen</small></p>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                          <a href="#" class="iq-sub-card" >
+                                              <div class="media align-items-center">
+                                                  <div class="">
+                                                  <img class="avatar-40 rounded-small" src="assets/images/icon/bell.png" alt="02">
+                                                  </div>
+                                                  <div class="media-body ml-3 rtl-mr-3 rtl-ml-0">
+                                                  <h6 class="mb-0 ">We have launched our new website</h6>
+                                                  <p class="mb-0 ">Check it out</p>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                          <a href="#" class="iq-sub-card" >
+                                              <div class="media align-items-center">
+                                                <div class="">
+                                                <img class="avatar-40 rounded-small" src="assets/images/icon/offer.png" alt="01">
+                                                </div>
+                                                <div class="media-body ml-3 rtl-ml-0 rtl-mr-3">
+                                                <h6 class="mb-0">We have added a new view to the dashboard</h6>                                             
+                                                <p class="mb-0"><small class="badge badge-success float-left rtl-mr-1">Check it out</small></p>
+                                                </div>
+                                              </div>
+                                          </a>
+                                      </div>
+                                      <a class="right-ic btn btn-primary btn-block position-relative p-2" href="#" role="button">
+                                          <div class="dd-icon"><i class="las la-arrow-right mr-0"></i></div>
+                                          View All
+                                      </a>                                   
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="caption-content">
+                              <a href="#" class="iq-user-toggle">
+                                  <img src="assets/images/user/user.jpg" class="img-fluid rounded" alt="user">
+                              </a>
+                              <div class="iq-user-dropdown">
+                                  <div class="card">
+                                      <div class="card-header d-flex justify-content-between align-items-center mb-0">
+                                      <div class="header-title">
+                                          <h4 class="card-title mb-0">Profile</h4>
+                                      </div>
+                                      <div class="close-data text-right badge badge-primary cursor-pointer"><i class="ri-close-fill"></i></div>
+                                      </div>
+                                      <div class="data-scrollbar" data-scroll="2">
+                                      <div class="card-body">
+                                          <div class="profile-header">
+                                              <div class="cover-container ">
+                                                  <div class="media align-items-center mb-4">
+                                                      <img src="assets/images/user/user.jpg" alt="profile-bg" class="rounded img-fluid avatar-80">
+                                                      <div class="media-body profile-detail ml-3 rtl-mr-3 rtl-ml-0">
+                                                          <h3>Brian Hughes</h3>
+                                                          <div class="d-flex flex-wrap">
+                                                              <p class="mb-1">Stokke</p><a href="auth-sign-in.html" class=" ml-3 rtl-mr-3 rtl-ml-0">Sign Out</a>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col-lg-6 col-md-6  col-6 pr-0">
+                                                      <div class="profile-details text-center">
+                                                          <a href="app/user-profile.html" class="iq-sub-card bg-primary-light rounded-small p-2"> 
+                                                              <div class="rounded iq-card-icon-small">
+                                                                  <i class="ri-file-user-line"></i>
+                                                              </div>
+                                                              <h6 class="mb-0 ">My Profile</h6>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6  col-md-6 col-6">
+                                                      <div class="profile-details text-center">
+                                                          <a href="app/user-profile-edit.html" class="iq-sub-card bg-danger-light rounded-small p-2">
+                                                              <div class="rounded iq-card-icon-small">
+                                                                  <i class="ri-profile-line"></i>
+                                                              </div>
+                                                              <h6 class="mb-0 ">Edit Profile</h6>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6  col-6 pr-0">
+                                                      <div class="profile-details text-center">
+                                                      <a href="app/user-account-setting.html" class="iq-sub-card bg-success-light rounded-small p-2">
+                                                              <div class="rounded iq-card-icon-small">
+                                                                  <i class="ri-account-box-line"></i>
+                                                              </div>
+                                                              <h6 class="mb-0 ">Account</h6>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-lg-6 col-md-6  col-6">
+                                                      <div class="profile-details text-center">
+                                                          <a href="app/user-privacy-setting.html" class="iq-sub-card bg-info-light rounded-small p-2">
+                                                              <div class="rounded iq-card-icon-small">
+                                                              <i class="ri-lock-line"></i>
+                                                              </div>
+                                                              <h6 class="mb-0 ">Settings</h6>
+                                                          </a>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="personal-details">
+                                                  <h5 class="card-title mb-3 mt-3">Personal Details</h5>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Birthday</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">3rd March</p>
+                                                  </div>
+                                                  </div>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Address</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">Landon</p>
+                                                  </div>
+                                                  </div>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Phone</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">(010)987 543 201</p>
+                                                  </div>
+                                                  </div>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Email</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">Barry@example.com</p>
+                                                  </div>
+                                                  </div>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Twitter</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">@Barry</p>
+                                                  </div>
+                                                  </div>
+                                                  <div class="row align-items-center mb-2">
+                                                  <div class="col-sm-6">
+                                                      <h6>Facebook</h6>
+                                                  </div>
+                                                  <div class="col-sm-6">
+                                                      <p class="mb-0">@Barry_Tech</p>
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="p-3"></div>
+                                      </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </li>
+                          </ul>                     
+                      </div> 
+                  </div>
+              </nav>
+          </div>
+      </div>
+      <div class="content-page rtl-page">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 mb-3">
+                <div class="d-flex align-items-center justify-content-between welcome-content">
+                    <div class="navbar-breadcrumb">
+                        <h4 class="mb-0">Welcome To Recom Dashboard</h4>
+                    </div>
+                    <div class="">
+                      <select class="custom-select bg-skyblue" id="inputGroupSelect01">
+                        <option value="607">&nbsp;&nbsp;Stokke&nbsp;&nbsp;</option>
+                        <option value="2222">&nbsp;&nbsp;BABYZEN&nbsp;&nbsp;</option>
+                     </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-block card-stretch card-height">
+                <div class="card-header border-none">
+                    <div class="header-title">
+                        <h4 class="card-title">Forecast Information</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="layout-1-chart-01"></div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="row">
+
+                <!-- Yesterday Sales -->
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden" style="position: relative;">
+                    <div class="card-body pb-0">
+                      <div class="rounded iq-card-icon bg-primary-light"><i class="ri-exchange-dollar-fill"></i>
+                      </div> <span class="float-right line-height-6">Yesterdays Sales</span>
+                      <div class="clearfix"></div>
+                      <div class="text-center">
+                        <h2 class="mb-0">$&nbsp;<span class="counter" id="yesterdars_sales">0</span></h2>
+                        <p class="mb-0 text-secondary line-height">
+                          <span class="text-primary">TOTAL UNITS</span> <span class="counter" id="yesterdars_units">0</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div id="chart-yesterday-sales"></div>
+                  </div>
+                </div>
+
+                <!-- Monthly Sales -->
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden" style="position: relative;">
+                    <div class="card-body pb-0">
+                      <div class="rounded iq-card-icon bg-success-light"><i class="ri-database-2-line"></i>
+                      </div> <span class="float-right line-height-6">Month to Date Sales</span>
+                      <div class="clearfix"></div>
+                      <div class="text-center">
+                        <h2 class="mb-0">$&nbsp;<span class="counter" id="montly_sales">0</span></h2>
+                        <p class="mb-0 text-secondary line-height">
+                          <span class="text-success">TOTAL UNITS</span> <span class="counter" id="montly_units">0</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div id="chart-montly-sales"></div>
+                  </div>
+                </div>
+
+                <!-- Year Sales -->
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden" style="position: relative;">
+                    <div class="card-body pb-0">
+                      <div class="rounded iq-card-icon bg-info-light"><i class="ri-refund-line"></i>
+                      </div> <span class="float-right line-height-6">Year to Date Sales</span>
+                      <div class="clearfix"></div>
+                      <div class="text-center">
+                        <h2 class="mb-0">$&nbsp;<span class="counter" id="year_sales">0</span></h2>
+                        <p class="mb-0 text-secondary line-height">
+                          <span class="text-info">TOTAL UNITS</span> <span class="counter" id="year_units">0</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div id="chart-year-sales"></div>
+                  </div>
+                </div>
+
+                <!-- Average Daily Sales -->
+               <!-- <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded bg-warning-light">
+                                <i class="las la-money-check-alt"></i>
+                            </div>
+                            <span class="">Average Units: <span class="counter" id="average_units">156</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3>$&nbsp;<span class="counter" id="average_sales">24,772</span></h3>
+                            <span class="mb-0">Average Daily Sales</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded bg-danger-light">
+                                <i class="las la-money-check-alt"></i>
+                            </div>
+                            <span class="">Average Units: <span class="counter" id="average_units_last_year">+ 30</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3 class="">+&nbsp;<span class="counter" id="average_sales_last_year">$2,575</span></h3>
+                            <span class="mb-0">Month variance vs last year</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height overflow-hidden">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded bg-info-light">
+                                <i class="las la-money-check-alt"></i>
+                            </div>
+                            <span class="">Average Units: <span class="counter" id="average_units_last_year">+ 150</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3 class="">+&nbsp;<span class="counter" id="average_sales_last_year">$4,575</span></h3>
+                            <span class="mb-0">Month to date vs Month to date Prior Variance</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>-->
+
+          
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height bg-skyblue">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="bg-white icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded">
+                                <i class="las la-money-check-alt text-primary"></i>
+                            </div>
+                            <span class="text-white">Average Units: <span class="counter" id="average_units">156</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3 class="text-white">$&nbsp;<span class="counter" id="average_sales">24,772</span></h3>
+                            <span class="mb-0  text-white">Average Daily Sales</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height bg-orange">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="bg-white icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded">
+                                <i class="las la-money-check-alt text-primary"></i>
+                            </div>
+                            <span class="text-white">Percentage: <span class="counter" id="average_percentage_last_year">30</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3 class="text-white"><span class="counter" id="average_sales_last_year">$2,575</span></h3>
+                            <span class="mb-0  text-white">Month variance vs last year</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card card-block card-stretch card-height bg-green">
+                    <div class="card-body">
+                        <div class="top-block-one d-flex align-items-center justify-content-between">
+                            <div class="bg-white icon iq-icon-box-2 mr-2 rtl-ml-2 rtl-mr-0 rounded">
+                                <i class="las la-money-check-alt text-primary"></i>
+                            </div>
+                            <span class="text-white">Percentage: <span class="counter" id="average_percentage_prio_year">+ 150</span></span>
+                        </div>
+
+                        <div class="mt-4 ">
+                            <h3 class="text-white"><span class="counter" id="average_sales_prio_year">$4,575</span></h3>
+                            <span class="mb-0  text-white">Month to date vs Month to date Prior Variance</span>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch card-height">
+                    <div class="card-header border-none">
+                        <div class="header-title">
+                            <h4 class="card-title">Daily sales trend</h4>
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <div id="layout-1-chart-03"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+      </div>
+    </div>
+    <!-- Wrapper End-->
+    
+    
+    <div class="custom-control-inline change-rtl" >
+    
+     <a href="#" class="switch-rtl" data-active="true" for="rtl-mode" data-mode="rtl" >RTL</a>
+    </div>
+    
+    
+    
+    
+    
+    <footer class="iq-footer rtl-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <ul class="list-inline mb-0  rtl-pr-0 rtl-right">
+                        <li class="list-inline-item "><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-right ">
+                    Copyright 2020 <a href="#">Insta Dash</a> All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Backend Bundle JavaScript -->
+    <script src="assets/js/backend-bundle.min.js"></script>
+    <script src="assets/js/apexchartsdemo.js"></script>
+    
+    <!-- Flextree Javascript-->
+    <script src="assets/js/flex-tree.min.js"></script>
+    <script src="assets/js/tree.js"></script>
+    
+    <!-- Table Treeview JavaScript -->
+    <script src="assets/js/table-treeview.js"></script>
+    
+    <!-- Masonary Gallery Javascript -->
+    <script src="assets/js/masonry.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    
+    <!-- Mapbox Javascript -->
+    <script src="assets/js/mapbox-gl.js"></script>
+    <script src="assets/js/mapbox.js"></script>
+    
+    <!-- Fullcalender Javascript -->
+    <script src='assets/vendor/fullcalendar/core/main.js'></script>
+    <script src='assets/vendor/fullcalendar/daygrid/main.js'></script>
+    <script src='assets/vendor/fullcalendar/timegrid/main.js'></script>
+    <script src='assets/vendor/fullcalendar/list/main.js'></script>
+    
+    <!-- SweetAlert JavaScript -->
+    <script src="assets/js/sweetalert.js"></script>
+    
+    <!-- Vectoe Map JavaScript -->
+    <script src="assets/js/vector-map-custom.js"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="assets/js/customizer.js"></script>
+    <script src="assets/js/rtl.js"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="assets/js/chart-custom-sales.js"></script>
+    
+    <!-- slider JavaScript -->
+    <script src="assets/js/slider.js"></script>
+    
+    <!-- app JavaScript -->
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
