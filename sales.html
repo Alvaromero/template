@@ -21,6 +21,44 @@
       <link rel='stylesheet' href='assets/vendor/fullcalendar/timegrid/main.css' />
       <link rel='stylesheet' href='assets/vendor/fullcalendar/list/main.css' />
       <link rel="stylesheet" href="assets/vendor/mapbox/mapbox-gl.css">  </head>
+      <style>
+        .highcharts-figure {
+            margin: 0;
+        }
+
+        #play-controls {
+            max-width: 100%;
+            margin: 1em auto;
+        }
+
+        #container {
+            height: 900px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        #play-pause-button {
+            margin-left: 10px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: 1px solid rgba(2, 117, 255, 1);
+            border-radius: 25px;
+            color: white;
+            background-color: rgba(2, 117, 255, 1);
+            transition: background-color 250ms;
+        }
+
+        #play-pause-button:hover {
+            background-color: rgba(2, 117, 255, 0.5);
+        }
+
+        #play-range {
+            transform: translateY(2.5px);
+            width: calc(100% - 90px);
+            background: #f8f8f8;
+        }
+      </style>
   <body class="  ">
     <!-- loader Start -->
     <div id="loading">
@@ -590,6 +628,26 @@
                 <div class="card-body">
                     <div id="layout-1-chart-03"></div>
                 </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card card-block card-stretch card-height">
+                    <div class="card-header border-none">
+                        <div class="header-title">
+                            <h4 class="card-title">Sales by product</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <figure class="highcharts-figure">
+                            <div id="parent-container">
+                            <div id="play-controls">
+                              <button id="play-pause-button" class="fa fa-play" title="play"></button>
+                              <input id="play-range" type="range" value="1" min="1" max="10" />
+                            </div>
+                            <div id="container"></div>
+                          </div>
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
