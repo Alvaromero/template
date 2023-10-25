@@ -537,15 +537,57 @@
       const notyf = new Notyf();
       notyf
         .success({
-          duration: 5000,
+          duration: 10000,
           position: {
             x: 'right',
             y: 'top',
           },
-          message: 'You have a new email, when you can check it.',
+          message: 'Three <b>new skus</b> have been added to your account.',
           dismissible: true
         })
     }, 3000);
+
+    setTimeout(() => {
+      const notyf = new Notyf({
+        duration: 10000,
+        position: {
+          x: 'right',
+          y: 'top',
+        },
+        types: [
+          {
+            type: 'warning',
+            background: 'orange',
+            icon: {
+              className: 'material-icons',
+              tagName: 'i',
+              text: 'warning'
+            }
+          }
+        ],
+        icon: false,
+        dismissible: true
+      });
+      notyf
+        .open({
+          type: 'warning',
+          message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at amazon fba.'
+        })
+    }, 14000);
+
+    setTimeout(() => {
+      const notyf = new Notyf();
+      notyf
+        .success({
+          duration: 10000,
+          position: {
+            x: 'right',
+            y: 'top',
+          },
+          message: 'ASIN <b>B0089Y91HM</b> was your best selling product yesterday: USD <b><u>91,627.00</u></b>.',
+          dismissible: true
+        })
+    }, 25000);
 
   }
 
@@ -717,7 +759,14 @@ function getSubtitle() {
       enabled: false
     },
     xAxis: {
-      type: 'category'
+      type: 'category',
+      useHTML: true,
+      align: 'center',
+      labels: {
+        formatter: function(label) {
+          return label.value;
+        }
+      }
     },
     yAxis: {
       opposite: true,
@@ -728,7 +777,9 @@ function getSubtitle() {
     },
     tooltip: {
       formatter: function() {
-        return `${this.key}<br>${getMonthName(this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>`
+        return `
+          ${this.key}<br>${getMonthName(this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>
+        `
       }
     },
     plotOptions: {
