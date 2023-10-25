@@ -545,7 +545,7 @@
           message: 'Three <b>new SKUs</b> have been added to your account.',
           dismissible: true
         })
-    }, 3000);
+    }, 8000);
 
     setTimeout(() => {
       const notyf = new Notyf({
@@ -573,7 +573,7 @@
           type: 'warning',
           message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at Amazon FBA.'
         })
-    }, 14000);
+    }, 19000);
 
     setTimeout(() => {
       const notyf = new Notyf();
@@ -587,7 +587,7 @@
           message: 'ASIN <b>B0089Y91HM</b> was your best selling product yesterday: USD <b><u>91,627.00</u></b>.',
           dismissible: true
         })
-    }, 25000);
+    }, 30000);
 
   }
 
