@@ -449,6 +449,19 @@
         height: 500,
         type: 'line',
         stacked: false,
+        events: {
+          zoomed: function(chartContext, { xaxis, yaxis }) {
+            const zoomStart = xaxis.min >= new Date('01 Jan 2022').getTime() ? xaxis.min : new Date('01 Jan 2022').getTime();
+            const zoomEnd = xaxis.max <= new Date('24 Oct 2023').getTime() ? xaxis.max : new Date('24 Oct 2023').getTime();
+            chartContext.updateOptions({
+              xaxis: {
+                type: 'datetime',
+                min: zoomStart,
+                max: zoomEnd,
+              }
+            }, false, false);
+          }
+        }
       },
       stroke: {
         width: [0, 2],
@@ -478,6 +491,7 @@
       },
       xaxis: {
         type: 'datetime',
+        min: new Date('01 Oct 2023').getTime()
       },
       yaxis: {
         show: true,
@@ -708,7 +722,7 @@ function getMonthName(monthNumber) {
 function getSubtitle() {
   const population = (getData(input.value)[0][1]).toFixed(2);
   const value = getMonthName(input.value);
-  return `<span style="font-size: 80px">${value}</span>
+  return `<span style="font-size: 60px">${value}</span>
     <br>
     <span style="font-size: 22px">
       Total: <b>: ${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(population)}</b> dollars
@@ -752,7 +766,7 @@ function getSubtitle() {
       align: 'right',
       verticalAlign: 'middle',
       y: 0,
-      x: -100
+      x: -20
     },
 
     legend: {
