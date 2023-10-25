@@ -542,7 +542,7 @@
             x: 'right',
             y: 'top',
           },
-          message: 'Three <b>new skus</b> have been added to your account.',
+          message: 'Three <b>new SKUs</b> have been added to your account.',
           dismissible: true
         })
     }, 3000);
@@ -571,7 +571,7 @@
       notyf
         .open({
           type: 'warning',
-          message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at amazon fba.'
+          message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at Amazon FBA.'
         })
     }, 14000);
 
