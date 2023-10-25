@@ -434,75 +434,58 @@
     })
 
     /* Year sales trend */
-    const baseUnit = window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).length;
+    //const baseUnit = window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).length;
     const optionsYearSalesTrend = {
-      series: [
-        {
-          name: 'Sales',
-          type: 'column',
-          data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
-        }, {
-          name: 'Expected',
-          type: 'line',
-          data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
-        }],
+      series: [{
+        name: ' Sales',
+        type: 'column',
+        data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
+      }, {
+          name: ' Expected',
+        type: 'line',
+        data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+      }],
       chart: {
         height: 500,
         type: 'line',
-        stacked: true,
-        events: {
-          zoomed: function(chartContext, { xaxis, yaxis }) {
-            const zoomStart = xaxis.min >= 1 ? xaxis.min : 1;
-            const zoomEnd = xaxis.max <= baseUnit ? xaxis.max : baseUnit;
-            chartContext.updateOptions({
-              xaxis: {
-                categories: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
-                tickPlacement: 'on',
-                labels: { show: true, rotate: -90, },
-                min: zoomStart,
-                max: zoomEnd,
-              }
-            }, false, false);
-          },
-          beforeResetZoom: function(chartContext, opts) {
-            return {
-              xaxis: {
-                min: baseUnit - 10,
-                max: baseUnit
-              }
-            }
-          }
-        }
+        stacked: false,
       },
       stroke: {
-        width: [0, 4]
+        width: [0, 2],
+        curve: 'smooth'
       },
       plotOptions: {
-        bar: { columnWidth: "60%" }
+        bar: {
+          columnWidth: '50%'
+        }
       },
-      dataLabels: {
-        enabled: false
+
+      fill: {
+        opacity: [0.85, 1],
+        gradient: {
+          inverseColors: false,
+          shade: 'light',
+          type: "vertical",
+          opacityFrom: 0.85,
+          opacityTo: 0.55,
+          stops: [0, 100, 100, 100]
+        }
+      },
+      labels: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
+      colors: ['#05bbc9', '#fe721c'],
+      markers: {
+        size: 0
       },
       xaxis: {
-        categories: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
-        tickPlacement: 'on',
-        labels: {
-          show: true,
-          rotate: -90, // Rota las etiquetas para que sean legibles
-        },
-        min: baseUnit - 10,
-        max: baseUnit
+        type: 'datetime',
       },
-      yaxis: [
-        {
-          seriesName: 'Sales',
-          show: false
-        },
-        {
-          seriesName: 'Expected',
-          show: false
+      yaxis: {
+        show: true,
+        labels: {
+          minWidth: 20,
+          maxWidth: 20
         }
-      ],
+      },
       tooltip: {
         shared: true,
         intersect: false,
