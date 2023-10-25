@@ -460,6 +460,15 @@
                 max: zoomEnd,
               }
             }, false, false);
+          },
+          beforeResetZoom: function(chartContext, opts) {
+            return {
+              xaxis: {
+                type: 'datetime',
+                min: new Date('01 Oct 2023').getTime(),
+                maz: new Date('24 Oct 2023').getTime()
+              }
+            }
           }
         }
       },
