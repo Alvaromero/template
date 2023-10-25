@@ -635,11 +635,13 @@ function getData(year) {
 
 function getMonthName(monthNumber) {
   const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January - 2022", "February - 2022", "March - 2022", "April - 2022", "May - 2022", "June - 2022",
+      "July - 2022", "August - 2022", "September - 2022", "October - 2022", "Novembe - 2022", "December - 2022",
+      "January - 2023", "February - 2023", "March - 2023", "April - 2023", "May - 2023", "June - 2023",
+      "July - 2023", "August - 2023", "September - 2023", "October - 2023", "Novembe - 2023", "December - 2023"
   ];
 
-  if (monthNumber >= 1 && monthNumber <= 12) {
+  if (monthNumber >= 1 && monthNumber <= 24) {
       return months[monthNumber - 1];
   } else {
       return "Invalid month number";
@@ -665,7 +667,7 @@ function getSubtitle() {
   dataset = {};
 
     window.productsData.forEach(item => {
-        const { asin, month, sales, month_number } = item;
+        const { asin, sales, month_number } = item;
 
         if (!dataset[asin]) {
           dataset[asin] = {};
@@ -673,6 +675,8 @@ function getSubtitle() {
 
         dataset[asin][month_number] = parseFloat(sales);
     });
+
+    console.log(dataset);
 
 
   chart = Highcharts.chart('container', {
@@ -683,7 +687,7 @@ function getSubtitle() {
       marginRight: 50
     },
     title: {
-      text: 'Sales of main products in 2023',
+      text: 'Sales of main products in 2022 & 2023',
       align: 'left'
     },
     subtitle: {
@@ -692,7 +696,7 @@ function getSubtitle() {
       floating: true,
       align: 'right',
       verticalAlign: 'middle',
-      y: -80,
+      y: 0,
       x: -100
     },
 
@@ -821,10 +825,15 @@ function play(button) {
   button.className = 'fa fa-pause';
   chart.sequenceTimer = setInterval(function () {
     update(1);
-  }, 500);
+  }, 1000);
 }
 
-btn.addEventListener('click', function () {
+btn.addEventListener('click', function (idx) {
+  /*if(Number(input.value) == 10) {
+    input.value = 1;
+    update();
+    return;
+  }*/
   if (chart.sequenceTimer) {
     pause(this);
   } else {
