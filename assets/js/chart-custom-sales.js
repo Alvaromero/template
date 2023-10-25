@@ -532,6 +532,21 @@
             });
     });
 
+    setTimeout(() => {
+      //PNotify.defaultModules.set(PNotifyMobile, {});
+      const notyf = new Notyf();
+      notyf
+        .success({
+          duration: 5000,
+          position: {
+            x: 'right',
+            y: 'top',
+          },
+          message: 'You have a new email, when you can check it.',
+          dismissible: true
+        })
+    }, 3000);
+
   }
 
 
@@ -636,9 +651,9 @@ function getData(year) {
 function getMonthName(monthNumber) {
   const months = [
       "January - 2022", "February - 2022", "March - 2022", "April - 2022", "May - 2022", "June - 2022",
-      "July - 2022", "August - 2022", "September - 2022", "October - 2022", "Novembe - 2022", "December - 2022",
+      "July - 2022", "August - 2022", "September - 2022", "October - 2022", "November - 2022", "December - 2022",
       "January - 2023", "February - 2023", "March - 2023", "April - 2023", "May - 2023", "June - 2023",
-      "July - 2023", "August - 2023", "September - 2023", "October - 2023", "Novembe - 2023", "December - 2023"
+      "July - 2023", "August - 2023", "September - 2023", "October - 2023", "November - 2023", "December - 2023"
   ];
 
   if (monthNumber >= 1 && monthNumber <= 24) {
@@ -675,8 +690,6 @@ function getSubtitle() {
 
         dataset[asin][month_number] = parseFloat(sales);
     });
-
-    console.log(dataset);
 
 
   chart = Highcharts.chart('container', {
