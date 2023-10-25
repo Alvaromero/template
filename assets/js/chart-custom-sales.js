@@ -35,7 +35,7 @@
     /* FORECAST INFORMATION */
     const monthlySales = montlyData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
     let options = {
-      series: [73.33, 66.66],
+      series: [66.66, 73.33],
       labels: ['Expected sales', 'Current sales'],
       chart: {
         height: 400,
@@ -61,7 +61,7 @@
             value: { fontSize: '16px', },
             total: {
               show: true,
-              label: 'Monthly Sales',
+              label: 'Current sales',
               formatter: function (w) {
                 return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(monthlySales)
               }
@@ -366,12 +366,14 @@
         size: [4, 4]
       },
       xaxis: {
-        categories: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.hour),
+        categories: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => {
+          return `${day.hour} ${day.hour < 12 ? 'A.M' : 'P.M'}`
+        }),
         tickPlacement: 'on',
         labels: {
           show: true,
           rotate: -90, // Rota las etiquetas para que sean legibles
-        }
+        },
       },
       yaxis: [
         {
@@ -395,8 +397,6 @@
         }
       },
       tooltip: {
-        shared: true,
-        intersect: false,
         y: {
           formatter: function (y) {
             if (typeof y !== "undefined") {
@@ -404,6 +404,15 @@
             }
             return y;
 
+          }
+        },
+        x: {
+          formatter: function (x, z) {
+            if (typeof x !== "undefined") {
+              const category = window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId))[x-1];
+              return `Hour: ${category.hour} ${Number(category.hour) < 12 ? 'A.M' : 'P.M'}`;
+            }
+            return x;
           }
         }
       }
