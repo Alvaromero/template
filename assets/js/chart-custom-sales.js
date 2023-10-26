@@ -833,7 +833,6 @@ function getSubtitle() {
             default:
               return label.value;
           }
-          return label.value;
         }
       }
     },
@@ -845,8 +844,14 @@ function getSubtitle() {
       }
     },
     tooltip: {
+      useHTML: true,
+      style: {
+        backgroundColor: 'red',  // Cambia el color del texto de la etiqueta
+        fontSize: '14px'  // Cambia el tamaño de fuente
+      },
       formatter: function() {
         return `
+          <img src='assets/images/asins/${this.key}.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'>
           ${this.key}<br>${getDateFromDayOfYear(2023, this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>
         `
       }
