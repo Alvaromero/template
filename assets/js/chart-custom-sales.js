@@ -713,24 +713,22 @@ function getData(year) {
   return [output[0], output.slice(1, nbr)];
 }
 
-function getMonthName(monthNumber) {
-  const months = [
-      "January - 2022", "February - 2022", "March - 2022", "April - 2022", "May - 2022", "June - 2022",
-      "July - 2022", "August - 2022", "September - 2022", "October - 2022", "November - 2022", "December - 2022",
-      "January - 2023", "February - 2023", "March - 2023", "April - 2023", "May - 2023", "June - 2023",
-      "July - 2023", "August - 2023", "September - 2023", "October - 2023", "November - 2023", "December - 2023"
-  ];
+function getDateFromDayOfYear(year, dayOfYear) {
+  // Crea una nueva fecha en el año especificado y establece el día del año
+  var date = new Date(year, 0); // El mes 0 es enero
+  date.setDate(dayOfYear);
 
-  if (monthNumber >= 1 && monthNumber <= 24) {
-      return months[monthNumber - 1];
-  } else {
-      return "Invalid month number";
-  }
+  // Formatea la fecha en el formato "YYYY-MM-DD"
+  var yyyy = date.getFullYear();
+  var mm = String(date.getMonth() + 1).padStart(2, '0'); // El mes es 0-indexado
+  var dd = String(date.getDate()).padStart(2, '0');
+
+  return yyyy + '-' + mm + '-' + dd;
 }
 
 function getSubtitle() {
   const population = (getData(input.value)[0][1]).toFixed(2);
-  const value = getMonthName(input.value);
+  const value = getDateFromDayOfYear(2023, input.value);
   return `<span style="font-size: 60px">${value}</span>
     <br>
     <span style="font-size: 22px">
@@ -765,7 +763,7 @@ function getSubtitle() {
       marginRight: 50
     },
     title: {
-      text: 'Sales of main products in 2022 & 2023',
+      text: 'Sales of main products in 2023',
       align: 'left'
     },
     subtitle: {
@@ -787,6 +785,54 @@ function getSubtitle() {
       align: 'center',
       labels: {
         formatter: function(label) {
+          switch (label.value) {
+            case "B0089Y91HM":
+              return "Stokke Tray White <br> Designed for Tripp Trapp Chair";
+            case "B09Z3942HF":
+              return "Stokke Tray, Storm Grey <br> Designed for Tripp Trapp Chair";
+            case "B07JLZPPQY":
+              return "JetKids by Stokke BedBox <br> Pink Lemonade";
+            case "B07JP4QRTY":
+              return "Tripp Trapp Newborn Set <br> Grey - Convert";
+            case "B07KQPRS54":
+              return "Tripp Trapp High Chair from Stokke <br> White - Adjustable";
+            case "B07KQPRS54":
+              return "Tripp Trapp High Chair from Stokke <br> White - Adjustable";
+            case "B07KQPSPJP":
+              return "Tripp Trapp High Chair from Stokke <br> Walnut - Adjustable";
+            case "B07KQQHX6H":
+              return "Tripp Trapp High Chair from Stokke <br> Whitewash - Adjustable";
+            case "B07KQRJBG1":
+              return "Tripp Trapp High Chair from Stokke <br> Black - Adjustable";
+            case "B07L6QL784":
+              return "Tripp Trapp High Chair from Stokke <br> Natural - Adjustable";
+            case "B07RJ3C7DX":
+              return "Stokke Flexi Bath X-Large <br> White - Spacious Foldable Baby Bathtub";
+            case "B07Z6R81ZS":
+              return "Stokke Clikk High Chair <br> Cloud Grey";
+            case "B09QH4G6QF":
+              return "Stokke Clikk High Chair <br> Fjord Blue - All-in-One";
+            case "B09QH6PGHQ":
+              return "JetKids by Stokke CloudSleeper <br> Kids Inflatable Travel Bed";
+            case "B09VVNZYNL":
+              return "Stokke Clikk High Chair <br> Black Natural - All-in-One";
+            case "B09Z3942HF":
+              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray - Natural";
+            case "B0B2FKCZKJ":
+              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray - Black";
+            case "B0B8K58948":
+              return "Tripp Trapp High Chair <br> Fjord Blue - Adjustable";
+            case "B0BLHVZ4H7":
+              return "Stokke Clikk High Chair <br> White - All-in-One High Chair";
+            case "B0C28TJFMV":
+              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray";
+            case "B07641R1F3":
+              return "Stokke Tray, Storm Grey <br> Tripp Trapp Baby Set";
+            case "B07KQR7GBK":
+                return "Tripp Trapp High Chair <br> Whitewash - Adjustable";
+            default:
+              return label.value;
+          }
           return label.value;
         }
       }
@@ -801,7 +847,7 @@ function getSubtitle() {
     tooltip: {
       formatter: function() {
         return `
-          ${this.key}<br>${getMonthName(this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>
+          ${this.key}<br>${getDateFromDayOfYear(2023, this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>
         `
       }
     },
@@ -912,7 +958,7 @@ function play(button) {
   button.className = 'fa fa-pause';
   chart.sequenceTimer = setInterval(function () {
     update(1);
-  }, 1000);
+  }, 100);
 }
 
 btn.addEventListener('click', function (idx) {
