@@ -786,50 +786,46 @@ function getSubtitle() {
       labels: {
         formatter: function(label) {
           switch (label.value) {
-            case "B0089Y91HM":
-              return "Stokke Tray White <br> Designed for Tripp Trapp Chair";
-            case "B09Z3942HF":
-              return "Stokke Tray, Storm Grey <br> Designed for Tripp Trapp Chair";
-            case "B07JLZPPQY":
-              return "JetKids by Stokke BedBox <br> Pink Lemonade";
-            case "B07JP4QRTY":
-              return "Tripp Trapp Newborn Set <br> Grey - Convert";
-            case "B07KQPRS54":
-              return "Tripp Trapp High Chair from Stokke <br> White - Adjustable";
-            case "B07KQPRS54":
-              return "Tripp Trapp High Chair from Stokke <br> White - Adjustable";
-            case "B07KQPSPJP":
-              return "Tripp Trapp High Chair from Stokke <br> Walnut - Adjustable";
-            case "B07KQQHX6H":
-              return "Tripp Trapp High Chair from Stokke <br> Whitewash - Adjustable";
-            case "B07KQRJBG1":
-              return "Tripp Trapp High Chair from Stokke <br> Black - Adjustable";
             case "B07L6QL784":
-              return "Tripp Trapp High Chair from Stokke <br> Natural - Adjustable";
-            case "B07RJ3C7DX":
-              return "Stokke Flexi Bath X-Large <br> White - Spacious Foldable Baby Bathtub";
-            case "B07Z6R81ZS":
-              return "Stokke Clikk High Chair <br> Cloud Grey";
-            case "B09QH4G6QF":
-              return "Stokke Clikk High Chair <br> Fjord Blue - All-in-One";
-            case "B09QH6PGHQ":
-              return "JetKids by Stokke CloudSleeper <br> Kids Inflatable Travel Bed";
-            case "B09VVNZYNL":
-              return "Stokke Clikk High Chair <br> Black Natural - All-in-One";
+              return "Natural Adjustable";
             case "B09Z3942HF":
-              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray - Natural";
-            case "B0B2FKCZKJ":
-              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray - Black";
-            case "B0B8K58948":
-              return "Tripp Trapp High Chair <br> Fjord Blue - Adjustable";
-            case "B0BLHVZ4H7":
-              return "Stokke Clikk High Chair <br> White - All-in-One High Chair";
-            case "B0C28TJFMV":
-              return "Tripp Trapp High Chair <br> and Cushion with Stokke Tray";
-            case "B07641R1F3":
-              return "Stokke Tray, Storm Grey <br> Tripp Trapp Baby Set";
+              return "Cushion with Tray";
+            case "B07JP4QRTY":
+              return "Newborn Set Grey";
+            case "B0089Y91HM":
+              return "Tray, White Designed";
+            case "B07KQQHX6H":
+              return "Adjustable Wooden Natural";
+            case "B07RJ3C7DX":
+              return "Flexi Bath X-Large";
+            case "B07Z6R81ZS":
+              return "Cloud Grey  with Tray";
+            case "B09QH6PGHQ":
+              return "CloudSleeper Kids Inflatable";
             case "B07KQR7GBK":
-                return "Tripp Trapp High Chair <br> Whitewash - Adjustable";
+              return "Whitewash, Adjustable";
+            case "B07KQRJBG1":
+              return "Black Adjustable";
+            case "B07KQPSPJP":
+              return "Walnut Adjustable";
+            case "B0BLHVZ4H7":
+              return "White All-in-One";
+            case "B0B8K58948":
+              return "Fjord Blue";
+            case "B09VVNZYNL":
+              return "Black Natural";
+            case "B09QH4G6QF":
+              return "Fjord Blue All-in-One";
+            case "B07KQPRS54":
+              return "White Adjustable";
+            case "B0B2FKCZKJ":
+              return "Cushion Black";
+            case "B0C28TJFMV":
+              return "Cushion Natural";
+            case "B07641R1F3":
+              return "Tray, Storm Grey";
+            case "B07JLZPPQY":
+              return "BedBox, Pink Lemonade";
             default:
               return label.value;
           }
