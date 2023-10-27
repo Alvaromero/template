@@ -714,7 +714,7 @@ function getData(year) {
 }
 
 function getDateFromDayOfYear(year, dayOfYear) {
-  if(dayOfYear = 0) {
+  if(dayOfYear == 0) {
     return '2022-12-31';
   }
   // Crea una nueva fecha en el año especificado y establece el día del año
@@ -779,7 +779,7 @@ function getSubtitle() {
     },
 
     legend: {
-      enabled: false
+      enabled: true
     },
     xAxis: {
       type: 'category',
@@ -877,7 +877,17 @@ function getSubtitle() {
       {
         type: 'bar',
         name: startYear,
-        data: getData(startYear)[1]
+        data: getData(startYear)[1],
+        /*dataLabels: {
+          enabled: true,
+          useHTML: true,
+          formatter: function() {
+            return `<img src='assets/images/asins/${this.key}.jpg' style='height: 45px;width: 45px;'> ${this.y}`;
+          },
+          style: {
+              fontWeight: 'bold'  // Personaliza el estilo de la etiqueta de datos
+          }
+        }*/
       }
     ],
     responsive: {
