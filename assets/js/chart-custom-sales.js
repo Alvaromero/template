@@ -783,51 +783,55 @@ function getSubtitle() {
     },
     xAxis: {
       type: 'category',
-      useHTML: true,
-      align: 'center',
       labels: {
+        align: "left",
+        reserveSpace: true,
+        allowOverlap:true,
+        maxStaggerLines:5,
+        overflow:"justify",
+        useHTML: true,
         formatter: function(label) {
           switch (label.value) {
             case "B07L6QL784":
-              return "Natural Adjustable";
+              return  `<img src='assets/images/asins/B07L6QL784.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'>Natural Adjustable`;
             case "B09Z3942HF":
-              return "Cushion with Tray";
+              return "<img src='assets/images/asins/B09Z3942HF.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion with Tray";
             case "B07JP4QRTY":
-              return "Newborn Set Grey";
+              return "<img src='assets/images/asins/B07JP4QRTY.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Newborn Set Grey";
             case "B0089Y91HM":
-              return "Tray, White Designed";
+              return "<img src='assets/images/asins/B0089Y91HM.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, White Designed";
             case "B07KQQHX6H":
-              return "Adjustable Wooden Natural";
+              return "<img src='assets/images/asins/B07KQQHX6H.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Adjustable Wooden Natural";
             case "B07RJ3C7DX":
-              return "Flexi Bath X-Large";
+              return "<img src='assets/images/asins/B07RJ3C7DX.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Flexi Bath X-Large";
             case "B07Z6R81ZS":
-              return "Cloud Grey  with Tray";
+              return "<img src='assets/images/asins/B07Z6R81ZS.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cloud Grey  with Tray";
             case "B09QH6PGHQ":
-              return "CloudSleeper Kids Inflatable";
+              return "<img src='assets/images/asins/B09QH6PGHQ.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> CloudSleeper Kids Inflatable   ........  ";
             case "B07KQR7GBK":
-              return "Whitewash, Adjustable";
+              return "<img src='assets/images/asins/B07KQR7GBK.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Whitewash, Adjustable";
             case "B07KQRJBG1":
-              return "Black Adjustable";
+              return "<img src='assets/images/asins/B07KQRJBG1.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Adjustable";
             case "B07KQPSPJP":
-              return "Walnut Adjustable";
+              return "<img src='assets/images/asins/B07KQPSPJP.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Walnut Adjustable";
             case "B0BLHVZ4H7":
-              return "White All-in-One";
+              return "<img src='assets/images/asins/B0BLHVZ4H7.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> White All-in-One";
             case "B0B8K58948":
-              return "Fjord Blue";
+              return "<img src='assets/images/asins/B0B8K58948.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue";
             case "B09VVNZYNL":
-              return "Black Natural";
+              return "<img src='assets/images/asins/B09VVNZYNL.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Natural";
             case "B09QH4G6QF":
-              return "Fjord Blue All-in-One";
+              return "<img src='assets/images/asins/B09QH4G6QF.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue All-in-One";
             case "B07KQPRS54":
-              return "White Adjustable";
+              return "<img src='assets/images/asins/B07KQPRS54.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> White Adjustable";
             case "B0B2FKCZKJ":
-              return "Cushion Black";
+              return "<img src='assets/images/asins/B0B2FKCZKJ.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Black";
             case "B0C28TJFMV":
-              return "Cushion Natural";
+              return "<img src='assets/images/asins/B0C28TJFMV.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Natural";
             case "B07641R1F3":
-              return "Tray, Storm Grey";
+              return "<img src='assets/images/asins/B07641R1F3.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, Storm Grey";
             case "B07JLZPPQY":
-              return "BedBox, Pink Lemonade";
+              return "<img src='assets/images/asins/B07JLZPPQY.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> BedBox, Pink Lemonade";
             default:
               return label.value;
           }
@@ -882,10 +886,8 @@ function getSubtitle() {
           enabled: true,
           useHTML: true,
           formatter: function() {
+            //return `<div class="bar-label"><img src='assets/images/asins/${this.key}.jpg' alt="Imagen" /></div>`;
             return `<img src='assets/images/asins/${this.key}.jpg' style='height: 45px;width: 45px;'> ${this.y}`;
-          },
-          style: {
-              fontWeight: 'bold'  // Personaliza el estilo de la etiqueta de datos
           }
         }*/
       }
