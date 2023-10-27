@@ -793,45 +793,45 @@ function getSubtitle() {
         formatter: function(label) {
           switch (label.value) {
             case "B07L6QL784":
-              return  `<img src='assets/images/asins/B07L6QL784.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'>Natural Adjustable`;
+              return  `<img src='assets/images/asins/B07L6QL784.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'>Natural Adjustable`;
             case "B09Z3942HF":
-              return "<img src='assets/images/asins/B09Z3942HF.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion with Tray";
+              return "<img src='assets/images/asins/B09Z3942HF.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion with Tray";
             case "B07JP4QRTY":
-              return "<img src='assets/images/asins/B07JP4QRTY.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Newborn Set Grey";
+              return "<img src='assets/images/asins/B07JP4QRTY.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Newborn Set Grey";
             case "B0089Y91HM":
-              return "<img src='assets/images/asins/B0089Y91HM.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, White Designed";
+              return "<img src='assets/images/asins/B0089Y91HM.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, White Designed";
             case "B07KQQHX6H":
-              return "<img src='assets/images/asins/B07KQQHX6H.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Adjustable Wooden Natural";
+              return "<img src='assets/images/asins/B07KQQHX6H.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Adjustable Wooden Natural";
             case "B07RJ3C7DX":
-              return "<img src='assets/images/asins/B07RJ3C7DX.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Flexi Bath X-Large";
+              return "<img src='assets/images/asins/B07RJ3C7DX.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Flexi Bath X-Large";
             case "B07Z6R81ZS":
-              return "<img src='assets/images/asins/B07Z6R81ZS.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cloud Grey  with Tray";
+              return "<img src='assets/images/asins/B07Z6R81ZS.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cloud Grey  with Tray";
             case "B09QH6PGHQ":
-              return "<img src='assets/images/asins/B09QH6PGHQ.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> CloudSleeper Kids Inflatable   ........  ";
+              return "<img src='assets/images/asins/B09QH6PGHQ.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> CloudSleeper Kids Inflatable   .....  ";
             case "B07KQR7GBK":
-              return "<img src='assets/images/asins/B07KQR7GBK.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Whitewash, Adjustable";
+              return "<img src='assets/images/asins/B07KQR7GBK.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Whitewash, Adjustable";
             case "B07KQRJBG1":
-              return "<img src='assets/images/asins/B07KQRJBG1.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Adjustable";
+              return "<img src='assets/images/asins/B07KQRJBG1.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Adjustable";
             case "B07KQPSPJP":
-              return "<img src='assets/images/asins/B07KQPSPJP.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Walnut Adjustable";
+              return "<img src='assets/images/asins/B07KQPSPJP.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Walnut Adjustable";
             case "B0BLHVZ4H7":
-              return "<img src='assets/images/asins/B0BLHVZ4H7.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> White All-in-One";
+              return "<img src='assets/images/asins/B0BLHVZ4H7.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> White All-in-One";
             case "B0B8K58948":
-              return "<img src='assets/images/asins/B0B8K58948.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue";
+              return "<img src='assets/images/asins/B0B8K58948.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue";
             case "B09VVNZYNL":
-              return "<img src='assets/images/asins/B09VVNZYNL.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Natural";
+              return "<img src='assets/images/asins/B09VVNZYNL.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Black Natural";
             case "B09QH4G6QF":
-              return "<img src='assets/images/asins/B09QH4G6QF.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue All-in-One";
+              return "<img src='assets/images/asins/B09QH4G6QF.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Fjord Blue All-in-One";
             case "B07KQPRS54":
-              return "<img src='assets/images/asins/B07KQPRS54.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> White Adjustable";
+              return "<img src='assets/images/asins/B07KQPRS54.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> White Adjustable";
             case "B0B2FKCZKJ":
-              return "<img src='assets/images/asins/B0B2FKCZKJ.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Black";
+              return "<img src='assets/images/asins/B0B2FKCZKJ.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Black";
             case "B0C28TJFMV":
-              return "<img src='assets/images/asins/B0C28TJFMV.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Natural";
+              return "<img src='assets/images/asins/B0C28TJFMV.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Cushion Natural";
             case "B07641R1F3":
-              return "<img src='assets/images/asins/B07641R1F3.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, Storm Grey";
+              return "<img src='assets/images/asins/B07641R1F3.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> Tray, Storm Grey";
             case "B07JLZPPQY":
-              return "<img src='assets/images/asins/B07JLZPPQY.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'> BedBox, Pink Lemonade";
+              return "<img src='assets/images/asins/B07JLZPPQY.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'> BedBox, Pink Lemonade";
             default:
               return label.value;
           }
@@ -855,7 +855,7 @@ function getSubtitle() {
       },
       formatter: function() {
         return `
-          <img src='assets/images/asins/${this.key}.jpg' style='height: 45px;' class='img-fluid rounded-normal light-logo' alt='logo'>
+          <img src='assets/images/asins/${this.key}.jpg' style='height: 35px;' class='img-fluid rounded-normal light-logo' alt='logo'>
           ${this.key}<br>${getDateFromDayOfYear(2023, this.series.name)}: <b>${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(this.y)}</b>
         `
       }
@@ -887,7 +887,7 @@ function getSubtitle() {
           useHTML: true,
           formatter: function() {
             //return `<div class="bar-label"><img src='assets/images/asins/${this.key}.jpg' alt="Imagen" /></div>`;
-            return `<img src='assets/images/asins/${this.key}.jpg' style='height: 45px;width: 45px;'> ${this.y}`;
+            return `<img src='assets/images/asins/${this.key}.jpg' style='height: 35px;width: 45px;'> ${this.y}`;
           }
         }*/
       }
