@@ -714,6 +714,9 @@ function getData(year) {
 }
 
 function getDateFromDayOfYear(year, dayOfYear) {
+  if(dayOfYear = 0) {
+    return '2022-12-31';
+  }
   // Crea una nueva fecha en el año especificado y establece el día del año
   var date = new Date(year, 0); // El mes 0 es enero
   date.setDate(dayOfYear);
@@ -729,7 +732,7 @@ function getDateFromDayOfYear(year, dayOfYear) {
 function getSubtitle() {
   const population = (getData(input.value)[0][1]).toFixed(2);
   const value = getDateFromDayOfYear(2023, input.value);
-  return `<span style="font-size: 60px">${value}</span>
+  return `<span style="font-size: 40px">${value}</span>
     <br>
     <span style="font-size: 22px">
       Total: <b>: ${new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(population)}</b> dollars
@@ -753,7 +756,6 @@ function getSubtitle() {
 
         dataset[asin][month_number] = parseFloat(sales);
     });
-
 
   chart = Highcharts.chart('container', {
     chart: {
@@ -833,6 +835,8 @@ function getSubtitle() {
       }
     },
     yAxis: {
+      min: 0,
+      max: 1800000,
       opposite: true,
       tickPixelInterval: 150,
       title: {
