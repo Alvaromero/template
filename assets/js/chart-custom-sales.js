@@ -34,52 +34,53 @@
     jQuery("#loading").delay().fadeOut("");
     /* FORECAST INFORMATION */
     const monthlySales = montlyData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
+    
     let options = {
-      series: [66.66, 73.33],
-      labels: ['Expected sales', 'Current sales'],
+      series: [{
+        name: 'Sales',
+        data: [monthlySales*0.75, monthlySales]
+      }],
       chart: {
-        height: 400,
-        type: 'radialBar',
-        animations: {
-          enabled: true,
-          easing: 'easeinout',
-          speed: 2000,
-          animateGradually: {
-              enabled: true,
-              delay: 150
-          },
-          dynamicAnimation: {
-              enabled: true,
-              speed: 150
-          }
-        }
-      },
-      plotOptions: {
-        radialBar: {
-          dataLabels: {
-            name: { fontSize: '22px', },
-            value: { fontSize: '16px', },
-            total: {
-              show: true,
-              label: 'Current sales',
-              formatter: function (w) {
-                return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(monthlySales)
-              }
-            },
-            value: {
-              fontSize: '16px',
-              formatter: function (val) {
-                return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(
-                  (val == 66.66) ? monthlySales : monthlySales * 1.1
-                );
-              }
-            }
-          },
-          track: { strokeWidth: '42%', }            
-        }
+        height: 350,
+        type: 'bar',
       },
       colors: ['#05bbc9', '#876cfe'],
-      stroke: { lineCap: "round" }
+      plotOptions: {
+        bar: {
+          columnWidth: '45%',
+          distributed: true,
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      legend: {
+        show: false
+      },
+      xaxis: {
+        categories: [
+          'Expected sales',
+          'Current sales'
+        ]
+      },
+      yaxis: [
+        {
+          seriesName: 'Sales',
+          show: false
+        }
+      ],
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(val)
+          }
+        },
+        x: {
+          formatter: function (val) {
+            return val;
+          }
+        }
+      }
     };
 
     if( chartForecastInformation != null ) {
