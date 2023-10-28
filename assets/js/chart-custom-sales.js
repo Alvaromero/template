@@ -38,7 +38,7 @@
     let options = {
       series: [{
         name: 'Sales',
-        data: [monthlySales*0.75, monthlySales]
+        data: [monthlySales*0.9, monthlySales]
       }],
       chart: {
         height: 350,
