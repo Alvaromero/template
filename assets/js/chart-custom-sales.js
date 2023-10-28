@@ -22,7 +22,7 @@
   }
 
   // información inicial
-  setData(607);
+  setData(0);
 
   // cambio de partner
   $( "#inputGroupSelect01" ).on( "change", function() {
@@ -33,7 +33,7 @@
     jQuery("#load").fadeOut();
     jQuery("#loading").delay().fadeOut("");
     /* FORECAST INFORMATION */
-    const monthlySales = montlyData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
+    const monthlySales = montlyData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0 ).reduce((total, item) => total + item.sales, 0);
     
     let options = {
       series: [{
@@ -100,9 +100,9 @@
     })
 
     /* Yesterdays Sales */
-    const yesterdaySales = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0).toFixed(2);
+    const yesterdaySales = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).reduce((total, item) => total + item.sales, 0).toFixed(2);
     $('#yesterdars_sales').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(yesterdaySales));
-    const yesterdayUnits = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.quantity, 0).toFixed(0);
+    const yesterdayUnits = yesterdayData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).reduce((total, item) => total + item.quantity, 0).toFixed(0);
     $('#yesterdars_units').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(yesterdayUnits));
     options = {
       chart: {
@@ -139,11 +139,11 @@
       },
       series: [{
         name: 'Sales',
-        data: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
+        data: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.sales)
       }, ],
       colors: ['#50b5ff'],
       xaxis: {
-        categories: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.hour),
+        categories: yesterdayData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.hour),
       },
       tooltip: {
         y: {
@@ -216,11 +216,11 @@
       },
       series: [{
           name: 'Sales',
-          data: montlyData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
+          data: montlyData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.sales)
       }, ],
       colors: ['#fd7e14'],
       xaxis: {
-        categories: montlyData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.date),
+        categories: montlyData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.date),
       },
       tooltip: {
           y: {
@@ -251,9 +251,9 @@
     })
 
     /* Year to Date Sales */
-    const yearSales = yearData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.sales, 0);
+    const yearSales = yearData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).reduce((total, item) => total + item.sales, 0);
     $('#year_sales').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(yearSales));
-    const yearUnits = yearData.filter(item => Number(item.brandId) == Number(partnerId)).reduce((total, item) => total + item.units, 0);
+    const yearUnits = yearData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).reduce((total, item) => total + item.units, 0);
     $('#year_units').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 0, minimumFractionDigits: 0 }).format(yearUnits));
     options = {
       chart: {
@@ -292,11 +292,11 @@
       },
       series: [{
         name: 'Sales',
-        data: yearData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.sales)
+        data: yearData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.sales)
       }, ],
       colors: ['#49f0d3'],
       xaxis: {
-        categories: yearData.filter(item => Number(item.brandId) == Number(partnerId)).map(hour => hour.month),
+        categories: yearData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0).map(hour => hour.month),
       },
       tooltip: {
           y: {
@@ -337,16 +337,31 @@
     $('#average_percentage_prio_year').text(new Intl.NumberFormat('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format((monthlySales - lastMontlyDataSales) / lastMontlyDataSales));
 
     /* Daily sales trend */
+    let salesByBrand = window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0);
+    const salesByHour = {};
+    salesByBrand.forEach(item => {
+      if (salesByHour[item.hour]) {
+          salesByHour[item.hour] += item.sales;
+      } else {
+          salesByHour[item.hour] = item.sales;
+      }
+    });
+    salesByBrand = Object.keys(salesByHour).map(hour => ({
+      hour,
+      sales: salesByHour[hour]
+    }));
+    salesByBrand.sort((a, b) => a.hour.localeCompare(b.hour));
+
     const optionsDailySales = {
       series: [
         {
           name: 'Sales',
           type: 'area',
-          data: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
+          data: salesByBrand.map(day => day.sales)
         }, {
           name: 'Expected',
           type: 'line',
-          data: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+          data: salesByBrand.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
         }],
       chart: {
         height: 500,
@@ -367,7 +382,7 @@
         size: [4, 4]
       },
       xaxis: {
-        categories: window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId)).map(day => {
+        categories: salesByBrand.map(day => {
           return `${day.hour} ${day.hour < 12 ? 'A.M' : 'P.M'}`
         }),
         tickPlacement: 'on',
@@ -410,7 +425,7 @@
         x: {
           formatter: function (x, z) {
             if (typeof x !== "undefined") {
-              const category = window.yesterdayData.filter(item => Number(item.brandId) == Number(partnerId))[x-1];
+              const category = salesByBrand[x-1];
               return `Hour: ${category.hour} ${Number(category.hour) < 12 ? 'A.M' : 'P.M'}`;
             }
             return x;
@@ -436,15 +451,30 @@
 
     /* Year sales trend */
     //const baseUnit = window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).length;
+    let salesByBrandYear = window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId) || Number(partnerId) == 0);
+    const salesByBrandYearHour = {};
+    salesByBrandYear.forEach(item => {
+      if (salesByBrandYearHour[item.date]) {
+        salesByBrandYearHour[item.date] += item.sales;
+      } else {
+        salesByBrandYearHour[item.date] = item.sales;
+      }
+    });
+    salesByBrandYear = Object.keys(salesByBrandYearHour).map(date => ({
+      date,
+      sales: salesByBrandYearHour[date]
+    }));
+    salesByBrandYear.sort((a, b) => a.date.localeCompare(b.date));
+
     const optionsYearSalesTrend = {
       series: [{
         name: ' Sales',
         type: 'column',
-        data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.sales)
+        data: salesByBrandYear.map(day => day.sales)
       }, {
           name: ' Expected',
         type: 'line',
-        data: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
+        data: salesByBrandYear.map(day => (day.sales/(0.8 + Math.random() * (1.5 - 0.8))))
       }],
       chart: {
         height: 500,
@@ -494,7 +524,7 @@
           stops: [0, 100, 100, 100]
         }
       },
-      labels: window.dailyTrendSales.filter(item => Number(item.brandId) == Number(partnerId)).map(day => day.date),
+      labels: salesByBrandYear.map(day => day.date),
       colors: ['#05bbc9', '#fe721c'],
       markers: {
         size: 0
@@ -555,63 +585,6 @@
                 offset: 'bottom-in-view',
             });
     });
-
-    setTimeout(() => {
-      //PNotify.defaultModules.set(PNotifyMobile, {});
-      const notyf = new Notyf();
-      notyf
-        .success({
-          duration: 10000,
-          position: {
-            x: 'right',
-            y: 'top',
-          },
-          message: 'Three <b>new SKUs</b> have been added to your account.',
-          dismissible: true
-        })
-    }, 8000);
-
-    setTimeout(() => {
-      const notyf = new Notyf({
-        duration: 10000,
-        position: {
-          x: 'right',
-          y: 'top',
-        },
-        types: [
-          {
-            type: 'warning',
-            background: 'orange',
-            icon: {
-              className: 'material-icons',
-              tagName: 'i',
-              text: 'warning'
-            }
-          }
-        ],
-        icon: false,
-        dismissible: true
-      });
-      notyf
-        .open({
-          type: 'warning',
-          message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at Amazon FBA.'
-        })
-    }, 19000);
-
-    setTimeout(() => {
-      const notyf = new Notyf();
-      notyf
-        .success({
-          duration: 10000,
-          position: {
-            x: 'right',
-            y: 'top',
-          },
-          message: 'ASIN <b>B0089Y91HM</b> was your best selling product yesterday: USD <b><u>91,627.00</u></b>.',
-          dismissible: true
-        })
-    }, 30000);
 
   }
 
@@ -999,6 +972,63 @@ input.addEventListener('click', function () {
 });
 
 update();
+
+  setTimeout(() => {
+    //PNotify.defaultModules.set(PNotifyMobile, {});
+    const notyf = new Notyf();
+    notyf
+      .success({
+        duration: 10000,
+        position: {
+          x: 'right',
+          y: 'top',
+        },
+        message: 'Three <b>new SKUs</b> have been added to your account.',
+        dismissible: true
+      })
+  }, 8000);
+
+  setTimeout(() => {
+    const notyf = new Notyf({
+      duration: 10000,
+      position: {
+        x: 'right',
+        y: 'top',
+      },
+      types: [
+        {
+          type: 'warning',
+          background: 'orange',
+          icon: {
+            className: 'material-icons',
+            tagName: 'i',
+            text: 'warning'
+          }
+        }
+      ],
+      icon: false,
+      dismissible: true
+    });
+    notyf
+      .open({
+        type: 'warning',
+        message: 'Shipment <b>FBA17GZ81F2T</b> has arrived at Amazon FBA.'
+      })
+  }, 19000);
+
+  setTimeout(() => {
+    const notyf = new Notyf();
+    notyf
+      .success({
+        duration: 10000,
+        position: {
+          x: 'right',
+          y: 'top',
+        },
+        message: 'ASIN <b>B0089Y91HM</b> was your best selling product yesterday: USD <b><u>91,627.00</u></b>.',
+        dismissible: true
+      })
+  }, 30000);
 
 
 })(jQuery);
